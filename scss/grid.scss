@@ -1,0 +1,38 @@
+.row {
+    width: 100%;
+}
+
+.row:after {
+    content: "";
+    display: block;
+    clear: both;
+    width: 100%;
+}
+
+[class^="col-"] {
+    width: 100%;
+    float: left;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@mixin grid($device) {
+    @for $i from 1 through 12 {
+        .col-#{$device}-#{$i} {
+            width: calc(100% * #{$i} /12);
+        }
+    }
+}
+
+@include grid('xs');
+@media screen and ( min-width: 768px) {
+    @include grid('sm');
+}
+
+@media screen and ( min-width: 992px) {
+    @include grid('md');
+}
+
+@media screen and ( min-width: 1200px) {
+    @include grid('lg');
+}
